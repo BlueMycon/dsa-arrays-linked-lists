@@ -77,25 +77,78 @@ class LinkedList {
   /** shift(): return & remove first item. */
 
   shift() {
-
+    if (this.head === null) throw new Error("Empty List");
+    let headVal = this.head.val;
+    this.head = this.head.next;
+    if (this.length === 1) this.tail = this.head;
+    this.length -= 1;
+    return headVal;
   }
 
   /** getAt(idx): get val at idx. */
 
   getAt(idx) {
+  if (this.length === 0 || idx < 0) throw new Error('Empty List');
 
+  let current = this.head;
+  let counter = 0;
+
+  while (counter < idx) {
+   current = current.next;
+   counter++;
+  }
+  console.log("current ===>", current);
+  console.log("current.val ===>", current.val);
+ return current.val;
   }
 
   /** setAt(idx, val): set val at idx to val */
 
   setAt(idx, val) {
+    if (this.length === 0 || idx < 0) throw new Error('Invalid Index');
 
+    let current = this.head;
+    let counter = 0;
+
+    while (counter < idx) {
+      current = current.next;
+      counter ++;
+    }
+ current.val = val;
   }
 
   /** insertAt(idx, val): add node w/val before idx. */
 
   insertAt(idx, val) {
+    if (idx < 0 || idx > this.length) throw new Error('Invalid Index');
 
+    if (idx === this.length) {
+      this.push(val);
+      return;
+    }
+
+    if (this.length === 0) {
+      this.unshift(val);
+      return;
+    }
+
+    const newNode = new Node(val);
+    let current = this.head;
+    let counter = 0;
+
+    if (idx === 0) {
+      this.unshift(val);
+      return;
+    }
+
+    while (counter < idx -1) {
+      current = current.next;
+      counter ++;
+    }
+ // [1, 2, 4, 5] (2, 3);
+  newNode.next = current.next,
+  current.next = newNode;
+  this.length += 1;
   }
 
   /** removeAt(idx): return & remove item at idx, */

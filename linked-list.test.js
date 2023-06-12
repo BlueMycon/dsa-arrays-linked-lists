@@ -63,106 +63,106 @@ describe("pop", function() {
   });
 });
 
-// describe("shift", function() {
-//   it("removes node at start and decrements length", function() {
-//     let lst = new LinkedList([5, 10]);
+describe("shift", function() {
+  it("removes node at start and decrements length", function() {
+    let lst = new LinkedList([5, 10]);
 
-//     expect(lst.shift()).toBe(5);
-//     expect(lst.tail.val).toBe(10);
-//     expect(lst.head.val).toBe(10);
-//     expect(lst.length).toBe(1);
+    expect(lst.shift()).toBe(5);
+    expect(lst.tail.val).toBe(10);
+    expect(lst.head.val).toBe(10);
+    expect(lst.length).toBe(1);
 
-//     expect(lst.shift()).toBe(10);
-//     expect(lst.head).toBe(null);
-//     expect(lst.tail).toBe(null);
-//     expect(lst.length).toBe(0);
-//   });
-// });
+    expect(lst.shift()).toBe(10);
+    expect(lst.head).toBe(null);
+    expect(lst.tail).toBe(null);
+    expect(lst.length).toBe(0);
+  });
+});
 
-// describe("getAt", function() {
-//   it("gets val at index", function() {
-//     let lst = new LinkedList([5, 10, 15, 20]);
+describe("getAt", function() {
+  it("gets val at index", function() {
+    let lst = new LinkedList([5, 10, 15, 20]);
 
-//     expect(lst.getAt(0)).toBe(5);
-//     expect(lst.getAt(1)).toBe(10);
-//     expect(lst.getAt(2)).toBe(15);
-//     expect(lst.getAt(3)).toBe(20);
-//   });
+    expect(lst.getAt(0)).toBe(5);
+    expect(lst.getAt(1)).toBe(10);
+    expect(lst.getAt(2)).toBe(15);
+    expect(lst.getAt(3)).toBe(20);
+  });
 
-//   it("throws an error when getAt index is out of range", function () {
-//     let lst = new LinkedList([5]);
+  it("throws an error when getAt index is out of range", function () {
+    let lst = new LinkedList([5]);
 
-//     expect(() => lst.getAt(-1)).toThrow(Error);
-//     expect(() => lst.getAt(1)).toThrow(Error);
+    expect(() => lst.getAt(-1)).toThrow(Error);
+    expect(() => lst.getAt(1)).toThrow(Error);
 
-//     lst.pop();
-//     expect(() => lst.getAt(0)).toThrow(Error);
-//   });
-// });
+    lst.pop();
+    expect(() => lst.getAt(0)).toThrow(Error);
+  });
+});
 
-// describe("setAt", function() {
-//   it("sets val at index", function() {
-//     let lst = new LinkedList([5, 10]);
+describe("setAt", function() {
+  it("sets val at index", function() {
+    let lst = new LinkedList([5, 10]);
 
-//     expect(lst.setAt(0, 1));
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.head.next.val).toBe(10);
-//     expect(lst.tail.val).toBe(10);
-//     expect(lst.length).toBe(2);
+    expect(lst.setAt(0, 1));
+    expect(lst.head.val).toBe(1);
+    expect(lst.head.next.val).toBe(10);
+    expect(lst.tail.val).toBe(10);
+    expect(lst.length).toBe(2);
 
-//     expect(lst.setAt(1, 2));
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.head.next.val).toBe(2);
-//     expect(lst.tail.val).toBe(2);
-//     expect(lst.length).toBe(2);
-//   });
+    expect(lst.setAt(1, 2));
+    expect(lst.head.val).toBe(1);
+    expect(lst.head.next.val).toBe(2);
+    expect(lst.tail.val).toBe(2);
+    expect(lst.length).toBe(2);
+  });
 
-//   it("throws an error when setAt index is out of range", function () {
-//     let lst = new LinkedList([5]);
+  it("throws an error when setAt index is out of range", function () {
+    let lst = new LinkedList([5]);
 
-//     expect(() => lst.setAt(-1, 10)).toThrow(Error);
-//     expect(() => lst.setAt(1, 10)).toThrow(Error);
-//   });
-// });
+    expect(() => lst.setAt(-1, 10)).toThrow(Error);
+    expect(() => lst.setAt(1, 10)).toThrow(Error);
+  });
+});
 
-// describe("insertAt", function() {
-//   it("inserts node and adjusts nearby nodes", function() {
-//     let lst = new LinkedList([5, 15]);
+describe("insertAt", function() {
+  it("inserts node and adjusts nearby nodes", function() {
+    let lst = new LinkedList([5, 15]);
 
-//     lst.insertAt(1, 10);
-//     expect(lst.head.val).toBe(5);
-//     expect(lst.head.next.val).toBe(10);
-//     expect(lst.head.next.next.val).toBe(15);
-//     expect(lst.tail.val).toBe(15);
-//     expect(lst.length).toBe(3);
+    lst.insertAt(1, 10);
+    expect(lst.head.val).toBe(5);
+    expect(lst.head.next.val).toBe(10);
+    expect(lst.head.next.next.val).toBe(15);
+    expect(lst.tail.val).toBe(15);
+    expect(lst.length).toBe(3);
 
-//     lst.insertAt(0, 1);
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.tail.val).toBe(15);
-//     expect(lst.length).toBe(4);
+    lst.insertAt(0, 1);
+    expect(lst.head.val).toBe(1); 
+    expect(lst.tail.val).toBe(15);
+    expect(lst.length).toBe(4);
 
-//     lst.insertAt(4, 20);
-//     expect(lst.head.val).toBe(1);
-//     expect(lst.tail.val).toBe(20);
-//     expect(lst.length).toBe(5);
-//   });
+    lst.insertAt(4, 20);
+    expect(lst.head.val).toBe(1);
+    expect(lst.tail.val).toBe(20);
+    expect(lst.length).toBe(5);
+  });
 
-//   it("inserts into empty list", function() {
-//     let lst = new LinkedList();
+  it("inserts into empty list", function() {
+    let lst = new LinkedList();
 
-//     lst.insertAt(0, 5);
-//     expect(lst.length).toBe(1);
-//     expect(lst.head.val).toBe(5);
-//     expect(lst.tail.val).toBe(5);
-//   });
+    lst.insertAt(0, 5);
+    expect(lst.length).toBe(1);
+    expect(lst.head.val).toBe(5);
+    expect(lst.tail.val).toBe(5);
+  });
 
-//   it("throws an error when insertAt index is out of range", function () {
-//     let lst = new LinkedList([5]);
+  it("throws an error when insertAt index is out of range", function () {
+    let lst = new LinkedList([5]);
 
-//     expect(() => lst.insertAt(-1, 0)).toThrow(Error);
-//     expect(() => lst.insertAt(2, 0)).toThrow(Error);
-//   });
-// });
+    expect(() => lst.insertAt(-1, 0)).toThrow(Error);
+    expect(() => lst.insertAt(2, 0)).toThrow(Error);
+  });
+});
 
 // describe("removeAt", function() {
 //   it("removes items from list", function() {
