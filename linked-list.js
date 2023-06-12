@@ -1,3 +1,5 @@
+"use strict";
+
 /** Node: node for a singly linked list. */
 
 class Node {
@@ -23,19 +25,53 @@ class LinkedList {
   /** push(val): add new value to end of list. */
 
   push(val) {
+    let newNode = new Node(val);
+    if (this.head === null) this.head = newNode;
+    if (this.tail !== null) this.tail.next = newNode;
 
+    this.tail = newNode;
+    this.length += 1;
   }
 
   /** unshift(val): add new value to start of list. */
 
   unshift(val) {
+    let newNode = new Node(val);
+    if (this.tail === null) this.tail = newNode;
+    if (this.head !== null) newNode.next = this.head;
 
+    this.head = newNode
+    this.length += 1;
   }
 
   /** pop(): return & remove last item. */
 
   pop() {
+    if (this.tail === null) throw new Error("Empty list.")
 
+    // hold onto it
+    let tailNode = this.tail;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let current = this.head
+      while (current !== null) {
+        if (current.next === this.tail) {
+          this.tail = current;
+          current.next = null;
+        } else {
+          current = current.next
+        }
+      }
+    }
+
+    // decrement length
+    this.length -= 1;
+
+    // return it
+    return tailNode.val;
   }
 
   /** shift(): return & remove first item. */
